@@ -1,26 +1,42 @@
-/*
- * File: 101-print_number.c
- * Author: Imanol Asolo
- */
-
 #include "main.h"
 
 /**
- * print_number - Prints an integer.
- * @n: The integer to be printed.
+ * print_number - print an integer using "_putchar".
+ *
+ * @n: the integer to print.
+ *
  */
+
 void print_number(int n)
 {
-unsigned int num = n;
+	unsigned int x, i = 1, y;
 
-if (n < 0)
-{
-_putchar('-');
-num = -num;
-}
-
-if ((num / 10) > 0)
-print_number(num / 10);
-
-_putchar((num % 10) + '0');
+	if (n < 0)
+	{
+	_putchar('-');
+	y = -n;
+	x = y;
+	}
+	else
+	{
+	y = n;
+	x = y;
+	}
+	if (n == 0)
+		_putchar('0');
+	else
+	{
+		while (x > 9)
+		{
+			i *= 10;
+			x /= 10;
+		}
+		while (i > 1)
+		{
+			_putchar((y / i) + '0');
+			y %= i;
+			i /= 10;
+		}
+		_putchar(y + '0');
+	}
 }
